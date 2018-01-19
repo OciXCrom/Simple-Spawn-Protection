@@ -2,7 +2,7 @@
 #include <fun>
 #include <hamsandwich>
 
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.0.1"
 #define TASK_PROTECT 222567
 
 enum _:Cvars
@@ -71,7 +71,9 @@ public RemoveProtection(id)
 {
 	id -= TASK_PROTECT
 	g_bProtect[id] = false
-	set_user_rendering(id, kRenderFxNone, 0, 0, 0, kRenderNormal, 0)
+	
+	if(is_user_connected(id))
+		set_user_rendering(id, kRenderFxNone, 0, 0, 0, kRenderNormal, 0)
 }
 
 parse_color(szRGB[], &iRed, &iGreen, &iBlue)
